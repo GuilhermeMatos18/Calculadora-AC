@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora AC</title>
+
+    <style>
+        body{
+         background: linear-gradient(20deg, blue, purple, gray, orangered);
+         }
+         .calculadora{
+            background-color: silver;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            border-radius: 10px;
+         } 
+
+        
+         .linha{
+            display: flex;
+            gap: 5px;
+            margin-bottom: 5px;
+         }
+
+         button{
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+         }
+
+         button:hover{
+           background-color: rgb(100, 100, 100);
+           color: white;
+         }
+
+         .esp:hover{
+            background-color: rgb(0, 82, 82);
+         }
+
+         #zero{
+            width: 105px;
+         }
+         #igual{
+            width: 105px;
+         }
+         .tela{
+            width: 215px;
+            height: 40px;
+            background-color: white;
+            font-size: 30px;
+            text-align: right;
+            overflow: hidden;
+         }
+
+         .esp{
+            background-color: aqua;
+         }
+
+         .desc{
+           font-size: 20px;
+           margin: 0;
+           position: absolute;
+           font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+         }
+    </style>
+
+</head>
+<body>
+    <div class="calculadora">
+        <p class="desc">guilherme</p>
+        <p class="tela"></p>
+        <div class="botoes">
+            <div class="linha">
+                <button onclick="apagarTudo()" class="esp" >AC</button>
+                <button onclick="apagar()" class="esp"><</button>
+                <button onclick="inserir('/')" class="esp">/</button>
+                <button onclick="inserir('+')" class="esp">+</button>
+            </div>
+            <div class="linha">
+                <button onclick="inserir('7')">7</button>
+                <button onclick="inserir('8')">8</button>
+                <button onclick="inserir('9')">9</button>
+                <button onclick="inserir('*')" class="esp">x</button>
+            </div>
+             <div class="linha">
+                <button onclick="inserir('4')">4</button>
+                <button onclick="inserir('5')">5</button>
+                <button onclick="inserir('6')">6</button>
+                <button onclick="inserir('-')" class="esp">-</button>
+            </div>
+
+             <div class="linha">
+                <button onclick="inserir('1')">1</button>
+                <button onclick="inserir('2')">2</button>
+                <button onclick="inserir('3')">3</button>
+                <button onclick="inserir('.')" class="esp">.</button>
+            </div>
+
+            <div class="linha">
+                <button onclick="inserir('0')" id="zero">0</button>
+                <button onclick="calcular()" class="esp" id="igual">=</button>
+            </div>
+        </div>
+    </div>
+    <script>
+
+    
+      function inserir(a){
+        var tela = document.querySelector('.tela').innerHTML;
+        document.querySelector('.tela').innerHTML = tela + a;
+      }
+
+
+    function apagarTudo(){
+           document.querySelector('.tela').innerHTML = "";
+    }
+
+     function apagar(){
+      var tela = document.querySelector('.tela').innerHTML;
+      document.querySelector('.tela').innerHTML = tela.substring(0, tela.length - 1)
+     }
+
+     function calcular(){
+      var tela = document.querySelector('.tela').innerHTML;
+      document.querySelector('.tela').innerHTML = eval(tela);
+     }
+
+
+    </script>
+</body>
+</html>
